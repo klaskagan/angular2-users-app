@@ -15,4 +15,8 @@ export class UsersService {
     return this.http.get(this.url).map((res: Response) => res.json());
   }
 
+  saveUser(user) {
+    // save user
+  }
+
 }

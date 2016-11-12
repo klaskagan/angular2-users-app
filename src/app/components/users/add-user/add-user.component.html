@@ -1,11 +1,11 @@
 <h2>Add a User</h2>
 
-<form [formGroup]="form">
+<form [formGroup]="form" (ngSubmit)="save()">
   <fieldset>
     <legend>User</legend>
     <div class="form-group">
       <label for="name">Name</label>
-      <input id="name" type="text" class="form-control" [formControl]="form.controls['name']" #aName="ngForm">
+      <input id="name" type="text" class="form-control" [formControl]="form.controls['name']" #aName="ngForm" required>
       <div *ngIf="aName.touched && aName.errors" class="alert alert-danger">
         <div *ngIf="aName.errors.required">Name is required</div>
       </div>
@@ -13,7 +13,7 @@
 
     <div class="form-group">
       <label for="email">Email</label>
-      <input id="email" type="email" class="form-control" [formControl]="form.controls['email']" #aEmail="ngForm">
+      <input id="email" type="email" class="form-control" [formControl]="form.controls['email']" #aEmail="ngForm" required>
       <div *ngIf="aEmail.touched && aEmail.errors" class="alert alert-danger">
         <div *ngIf="aEmail.errors.required">Email is required</div>
         <div *ngIf="aEmail.errors.emailInvalid">Please type a valid email</div>
