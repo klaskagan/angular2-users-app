@@ -35,7 +35,7 @@
 
     <div class="form-group">
       <label for="suite">Suite</label>
-      <input id="suite" type="email" class="form-control" [formControl]="form.controls['suite']" #suite="ngForm">
+      <input id="suite" type="text" class="form-control" [formControl]="form.controls['suite']" #suite="ngForm">
     </div>
 
     <div class="form-group">
@@ -49,7 +49,7 @@
     </div>
   </fieldset>
 
-  <button id="saveUserBtn" class="btn btn-primary" type="submit">Submit</button>
+  <button id="saveUserBtn" class="btn btn-primary" type="submit" [disabled]="form.invalid">Submit</button>
 
 
 </form>
