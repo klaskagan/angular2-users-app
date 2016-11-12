@@ -1,3 +1,22 @@
-<p>
-  users works!
-</p>
+<h1>Users</h1>
+
+<table class="table table-bordered">
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Edit</th>
+    <th>Delete</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <tr *ngFor="let user of users">
+    <td class="cell-1">{{user.name}}</td>
+    <td class="cell-2">{{user.email}}</td>
+    <td class="cell-3"><i class="glyphicon glyphicon-edit"></i></td>
+    <td class="cell-4"><i class="glyphicon glyphicon-remove"></i></td>
+  </tr>
+  </tbody>
+</table>
+

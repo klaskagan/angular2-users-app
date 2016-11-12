@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
@@ -9,6 +9,7 @@ import { UsersComponent } from './components/users/users.component';
 import { PostsComponent } from './components/posts/posts.component';
 import { HomeComponent } from './components/home/home.component';
 import {RouterModule} from "@angular/router";
+import {UrlRepository} from "./utils/url-repository";
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import {RouterModule} from "@angular/router";
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpModule,
     RouterModule.forRoot([
       {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -30,7 +32,7 @@ import {RouterModule} from "@angular/router";
       {path: '**', redirectTo: '/home'}
     ])
   ],
-  providers: [],
+  providers: [UrlRepository],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
