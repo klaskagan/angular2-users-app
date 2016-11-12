@@ -1,15 +1,15 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { HttpModule } from '@angular/http';
-
-import { AppComponent } from './app.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
-import { UsersComponent } from './components/users/users.component';
-import { PostsComponent } from './components/posts/posts.component';
-import { HomeComponent } from './components/home/home.component';
+import {BrowserModule} from "@angular/platform-browser";
+import {NgModule} from "@angular/core";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {HttpModule} from "@angular/http";
+import {AppComponent} from "./app.component";
+import {NavbarComponent} from "./components/navbar/navbar.component";
+import {UsersComponent} from "./components/users/users.component";
+import {PostsComponent} from "./components/posts/posts.component";
+import {HomeComponent} from "./components/home/home.component";
 import {RouterModule} from "@angular/router";
 import {UrlRepository} from "./utils/url-repository";
+import { AddUserComponent } from './components/users/add-user/add-user.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +17,8 @@ import {UrlRepository} from "./utils/url-repository";
     NavbarComponent,
     UsersComponent,
     PostsComponent,
-    HomeComponent
+    HomeComponent,
+    AddUserComponent
   ],
   imports: [
     BrowserModule,
@@ -29,10 +30,12 @@ import {UrlRepository} from "./utils/url-repository";
       {path: 'home', component: HomeComponent},
       {path: 'users', component: UsersComponent},
       {path: 'posts', component: PostsComponent},
+      {path: 'users/add', component: AddUserComponent},
       {path: '**', redirectTo: '/home'}
     ])
   ],
   providers: [UrlRepository],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

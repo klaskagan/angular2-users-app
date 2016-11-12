@@ -1,0 +1,48 @@
+<h2>Add a User</h2>
+
+<form [formGroup]="form">
+  <fieldset>
+    <legend>User</legend>
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input id="name" type="text" class="form-control" [formControl]="form.controls['name']" #name="ngForm">
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input id="email" type="email" class="form-control" [formControl]="form.controls['email']" #name="ngForm">
+    </div>
+
+    <div class="form-group">
+      <label for="phone">Phone</label>
+      <input id="phone" type="text" class="form-control" [formControl]="form.controls['phone']" #name="ngForm">
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Address</legend>
+    <div class="form-group">
+      <label for="street">Street</label>
+      <input id="street" type="text" class="form-control" [formControl]="form.controls['street']" #name="ngForm">
+    </div>
+
+    <div class="form-group">
+      <label for="suite">Suite</label>
+      <input id="suite" type="email" class="form-control" [formControl]="form.controls['suite']" #name="ngForm">
+    </div>
+
+    <div class="form-group">
+      <label for="city">City</label>
+      <input id="city" type="text" class="form-control" [formControl]="form.controls['city']" #name="ngForm">
+    </div>
+
+    <div class="form-group">
+      <label for="zipCode">Zip Code</label>
+      <input id="zipCode" type="text" class="form-control" [formControl]="form.controls['zipCode']" #name="ngForm">
+    </div>
+  </fieldset>
+
+  <button id="saveUserBtn" class="btn btn-primary" type="submit">Submit</button>
+
+
+</form>
