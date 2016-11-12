@@ -1,19 +1,21 @@
-<h2>Add a User</h2>
+<h2>{{title}}</h2>
 
 <form [formGroup]="form" (ngSubmit)="save()">
   <fieldset>
     <legend>User</legend>
     <div class="form-group">
       <label for="name">Name</label>
-      <input id="name" type="text" class="form-control" [formControl]="form.controls['name']" #aName="ngForm" required>
-      <div *ngIf="aName.touched && aName.errors" class="alert alert-danger">
-        <div *ngIf="aName.errors.required">Name is required</div>
+      <input id="name" type="text" class="form-control" formControlName="name" #name required
+             [(ngModel)]="user.name">
+      <div *ngIf="form.controls.name.touched && form.controls.name.errors" class="alert alert-danger">
+        <div *ngIf="form.controls.name.errors.required">Name is required</div>
       </div>
     </div>
 
     <div class="form-group">
       <label for="email">Email</label>
-      <input id="email" type="email" class="form-control" [formControl]="form.controls['email']" #aEmail="ngForm" required>
+      <input id="email" type="email" class="form-control" [formControl]="form.controls['email']" #aEmail="ngForm" required
+             [(ngModel)]="user.email">
       <div *ngIf="aEmail.touched && aEmail.errors" class="alert alert-danger">
         <div *ngIf="aEmail.errors.required">Email is required</div>
         <div *ngIf="aEmail.errors.emailInvalid">Please type a valid email</div>
@@ -22,30 +24,31 @@
 
     <div class="form-group">
       <label for="phone">Phone</label>
-      <input id="phone" type="text" class="form-control" [formControl]="form.controls['phone']" #phone="ngForm">
+      <input id="phone" type="text" class="form-control" [formControl]="form.controls['phone']" #phone="ngForm"
+             [(ngModel)]="user.phone">
     </div>
   </fieldset>
 
-  <fieldset>
+  <fieldset formGroupName="address">
     <legend>Address</legend>
     <div class="form-group">
       <label for="street">Street</label>
-      <input id="street" type="text" class="form-control" [formControl]="form.controls['street']" #street="ngForm">
+      <input id="street" type="text" class="form-control" formControlName="street" [(ngModel)]="user.address.street">
     </div>
 
     <div class="form-group">
       <label for="suite">Suite</label>
-      <input id="suite" type="text" class="form-control" [formControl]="form.controls['suite']" #suite="ngForm">
+      <input id="suite" type="text" class="form-control" formControlName="suite" [(ngModel)]="user.address.suite">
     </div>
 
     <div class="form-group">
       <label for="city">City</label>
-      <input id="city" type="text" class="form-control" [formControl]="form.controls['city']" #city="ngForm">
+      <input id="city" type="text" class="form-control" formControlName="city" [(ngModel)]="user.address.city">
     </div>
 
     <div class="form-group">
       <label for="zipCode">Zip Code</label>
-      <input id="zipCode" type="text" class="form-control" [formControl]="form.controls['zipCode']" #zipCode="ngForm">
+      <input id="zipCode" type="text" class="form-control" formControlName="zipcode" [(ngModel)]="user.address.zipcode">
     </div>
   </fieldset>
 

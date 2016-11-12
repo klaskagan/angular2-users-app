@@ -8,8 +8,8 @@ import {UsersComponent} from "./components/users/users.component";
 import {PostsComponent} from "./components/posts/posts.component";
 import {HomeComponent} from "./components/home/home.component";
 import {RouterModule} from "@angular/router";
-import {UrlRepository} from "./utils/url-repository";
 import { AddUserComponent } from './components/users/add-user/add-user.component';
+import {NotFoundComponent} from "./components/not-found.component";
 
 @NgModule({
   declarations: [
@@ -18,7 +18,8 @@ import { AddUserComponent } from './components/users/add-user/add-user.component
     UsersComponent,
     PostsComponent,
     HomeComponent,
-    AddUserComponent
+    AddUserComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -31,10 +32,12 @@ import { AddUserComponent } from './components/users/add-user/add-user.component
       {path: 'users', component: UsersComponent},
       {path: 'posts', component: PostsComponent},
       {path: 'users/add', component: AddUserComponent},
+      {path: 'users/:id', component: AddUserComponent},
+      {path: 'not-found', component: NotFoundComponent},
       {path: '**', redirectTo: '/home'}
     ])
   ],
-  providers: [UrlRepository],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {
