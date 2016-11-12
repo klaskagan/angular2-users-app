@@ -25,8 +25,11 @@ export class UsersService {
   }
 
   updateUser(user){
-    console.log(user);
     return this.http.put(this.getUserUrl(user.id), JSON.stringify(user)).map(res => res.json());
+  }
+
+  deleteUser(id) {
+    return this.http.delete(this.getUserUrl(id)).map(res => res.json());
   }
 
   private getUserUrl(userId){
