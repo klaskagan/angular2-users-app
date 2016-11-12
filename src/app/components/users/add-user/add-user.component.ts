@@ -30,8 +30,7 @@ export class AddUserComponent implements OnInit {
     }
 
     result.subscribe(x => {
-      // Ideally, here we'd want:
-      // this.form.markAsPristine();
+      this.form.markAsPristine();
       this.router.navigate(['/users']);
     });
   }

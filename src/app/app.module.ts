@@ -10,6 +10,7 @@ import {HomeComponent} from "./components/home/home.component";
 import {RouterModule} from "@angular/router";
 import { AddUserComponent } from './components/users/add-user/add-user.component';
 import {NotFoundComponent} from "./components/not-found.component";
+import {PreventUnsavedChangesGuard} from "./prevent-unsaved-changes-guard.service";
 
 @NgModule({
   declarations: [
@@ -31,13 +32,13 @@ import {NotFoundComponent} from "./components/not-found.component";
       {path: 'home', component: HomeComponent},
       {path: 'users', component: UsersComponent},
       {path: 'posts', component: PostsComponent},
-      {path: 'users/add', component: AddUserComponent},
-      {path: 'users/:id', component: AddUserComponent},
+      {path: 'users/add', component: AddUserComponent, canDeactivate: [ PreventUnsavedChangesGuard ]},
+      {path: 'users/:id', component: AddUserComponent, canDeactivate: [ PreventUnsavedChangesGuard ]},
       {path: 'not-found', component: NotFoundComponent},
       {path: '**', redirectTo: '/home'}
     ])
   ],
-  providers: [],
+  providers: [PreventUnsavedChangesGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule {
