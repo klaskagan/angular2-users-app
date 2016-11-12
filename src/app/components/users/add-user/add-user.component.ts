@@ -21,8 +21,19 @@ export class AddUserComponent implements OnInit {
   }
 
   save() {
-    this.usersService.saveUser(this.form.value);
-    this.router.navigate(['/users']);
+    var result;
+
+    if (this.user.id) {
+      result = this.usersService.updateUser(this.user);
+    } else {
+      result = this.usersService.addUser(this.user);
+    }
+
+    result.subscribe(x => {
+      // Ideally, here we'd want:
+      // this.form.markAsPristine();
+      this.router.navigate(['/users']);
+    });
   }
 
   ngOnInit() {
