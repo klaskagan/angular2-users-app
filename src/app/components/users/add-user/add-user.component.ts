@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup} from "@angular/forms";
+import {Component, OnInit} from "@angular/core";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {ValidationUtils} from "../../../validators/ValidationUtils";
 
 @Component({
   selector: 'app-add-user',
@@ -12,8 +13,13 @@ export class AddUserComponent implements OnInit {
 
   constructor(fb: FormBuilder) {
     this.form = fb.group({
-      name: [],
-      email: [],
+      name: ['', Validators.required],
+      email: ['', Validators.compose(
+        [
+          Validators.required,
+          ValidationUtils.emailValidator
+        ]
+      )],
       phone: [],
       street: [],
       suite: [],
