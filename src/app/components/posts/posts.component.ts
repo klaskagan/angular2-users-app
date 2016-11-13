@@ -12,8 +12,10 @@ export class PostsComponent implements OnInit {
 
   posts: Post[];
   isLoading: boolean;
+  isLoadingComments: boolean;
   isItemSelected: boolean;
   postDetails: Post;
+  comments: {}[];
 
   constructor(private postService: PostService) { }
 
@@ -25,7 +27,12 @@ export class PostsComponent implements OnInit {
   }
 
   itemSelected(post: Post) {
+    this.isLoadingComments = true;
     this.isItemSelected = true;
     this.postDetails = post;
+    this.postService.getComments(post.id).subscribe( comments => {
+      this.comments = comments;
+      this.isLoadingComments = false;
+    });
   }
 }

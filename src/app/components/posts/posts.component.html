@@ -9,15 +9,32 @@
   </div>
 
   <div class="col-md-6" *ngIf="isItemSelected">
-    <div id="sidebar" class="affix" data-spy="affix">
+    <div id="sidebar">
       <div class="panel panel-default">
         <div class="panel-heading">
           <h3 class="panel-title">{{postDetails.title}}</h3>
         </div>
         <div class="panel-body">
-          {{ postDetails.body }}
+          <p>{{ postDetails.body }}</p>
+          <hr>
+          <app-spinner [visible]="isLoadingComments"></app-spinner>
+          <div class="media" *ngFor="let comment of comments">
+            <div class="media-left">
+              <a href="#">
+                <img class="media-object" src="http://lorempixel.com/80/80/people?random=1" alt="..." style="border-radius: 100%">
+              </a>
+            </div>
+            <div class="media-body">
+              <h4 class="media-heading">{{ comment.name }}</h4>
+              {{ comment.body }}
+            </div>
         </div>
       </div>
+
+
+
+      </div>
+
     </div>
   </div>
 </div>
