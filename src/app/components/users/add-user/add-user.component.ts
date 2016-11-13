@@ -76,4 +76,14 @@ export class AddUserComponent implements OnInit {
     });
   }
 
+  getCity() {
+    /*
+    * To to check input for errors in model driven forms(Reactive Forms) you can use
+    * a. this getter.                   ex: *ngIf="getCity().errors"
+    * b. form.get('address.city')       ex: *ngIf="form.get('address.city').errors"
+    * c. form.get(['address', 'city']); ex: *ngIf="form.get(['address', 'city']).errors"
+    * */
+    return this.form.get('address.city');
+  }
+
 }

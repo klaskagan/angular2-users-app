@@ -11,6 +11,7 @@ import {RouterModule} from "@angular/router";
 import { AddUserComponent } from './components/users/add-user/add-user.component';
 import {NotFoundComponent} from "./components/not-found.component";
 import {PreventUnsavedChangesGuard} from "./prevent-unsaved-changes-guard.service";
+import { MaterialModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import {PreventUnsavedChangesGuard} from "./prevent-unsaved-changes-guard.servic
       {path: 'users/:id', component: AddUserComponent, canDeactivate: [ PreventUnsavedChangesGuard ]},
       {path: 'not-found', component: NotFoundComponent},
       {path: '**', redirectTo: '/home'}
-    ])
+    ]),
+    MaterialModule.forRoot()
   ],
   providers: [PreventUnsavedChangesGuard],
   bootstrap: [AppComponent]

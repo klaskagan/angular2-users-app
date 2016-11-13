@@ -5,27 +5,24 @@
     <legend>User</legend>
     <div class="form-group">
       <label for="name">Name</label>
-      <input id="name" type="text" class="form-control" formControlName="name" #name required
-             [(ngModel)]="user.name">
-      <div *ngIf="form.controls.name.touched && form.controls.name.errors" class="alert alert-danger">
-        <div *ngIf="form.controls.name.errors.required">Name is required</div>
+      <input id="name" type="text" class="form-control" formControlName="name" required [(ngModel)]="user.name">
+      <div *ngIf="form.get('name').touched && form.get('name').errors" class="alert alert-danger">
+        <div *ngIf="form.get('name').errors.required">Name is required</div>
       </div>
     </div>
 
     <div class="form-group">
       <label for="email">Email</label>
-      <input id="email" type="email" class="form-control" [formControl]="form.controls['email']" #aEmail="ngForm" required
-             [(ngModel)]="user.email">
-      <div *ngIf="aEmail.touched && aEmail.errors" class="alert alert-danger">
-        <div *ngIf="aEmail.errors.required">Email is required</div>
-        <div *ngIf="aEmail.errors.emailInvalid">Please type a valid email</div>
+      <input id="email" type="email" class="form-control" formControlName="email" required [(ngModel)]="user.email">
+      <div *ngIf="form.get('email').touched && form.get('email').errors" class="alert alert-danger">
+        <div *ngIf="form.get('email').errors.required">Email is required</div>
+        <div *ngIf="form.get('email').errors.emailInvalid">Please type a valid email</div>
       </div>
     </div>
 
     <div class="form-group">
       <label for="phone">Phone</label>
-      <input id="phone" type="text" class="form-control" [formControl]="form.controls['phone']" #phone="ngForm"
-             [(ngModel)]="user.phone">
+      <input id="phone" type="text" class="form-control" formControlName="phone" [(ngModel)]="user.phone">
     </div>
   </fieldset>
 
