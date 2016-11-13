@@ -11,7 +11,9 @@ import {Post} from "../../model/Post";
 export class PostsComponent implements OnInit {
 
   posts: Post[];
-  isLoading: boolean = true;
+  isLoading: boolean;
+  isItemSelected: boolean;
+  postDetails: Post;
 
   constructor(private postService: PostService) { }
 
@@ -22,4 +24,8 @@ export class PostsComponent implements OnInit {
     });
   }
 
+  itemSelected(post: Post) {
+    this.isItemSelected = true;
+    this.postDetails = post;
+  }
 }

@@ -1,0 +1,4 @@
+.selected, .post-hover:hover {
+  background-color: #f5f5f5;
+  cursor: pointer;
+}
