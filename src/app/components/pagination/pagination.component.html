@@ -1,0 +1,15 @@
+<nav aria-label="Page navigation" class="text-center" [class.hide]="!visible">
+  <ul class="pagination">
+    <li [class.disabled]="prevDisabled">
+      <a aria-label="Previous" (click)="prevClicked($event)" [attr.disabled]="prevDisabled">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    <li *ngFor="let p of pages" [class.active]="activeTabIndex == p" (click)="changePage(p)"><a>{{ p }}</a></li>
+    <li [class.disabled]="nextDisabled">
+      <a aria-label="Next" (click)="nextClicked($event)" [attr.disabled]="nextDisabled">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>

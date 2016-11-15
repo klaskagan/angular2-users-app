@@ -7,8 +7,10 @@
       <option *ngFor="let author of users" value="{{author.id}}">{{author.name}}</option>
     </select>
     <app-spinner [visible]="postsLoading"></app-spinner>
+    <app-pagination [rows]="rows" [itemsLength]="posts.length" (page-changed)="onPageChanged($event)"></app-pagination>
     <ul class="list-group" *ngIf="!postsLoading">
-      <li class="list-group-item post-hover" *ngFor="let post of posts" (click)="itemSelected(post)" [class.selected]="currentPost == post">
+      <li class="list-group-item post-hover" *ngFor="let post of pagedPosts" (click)="itemSelected(post)"
+          [class.selected]="currentPost == post">
         User id:{{post.userId}} - {{ post.title }}
       </li>
     </ul>
@@ -34,13 +36,9 @@
               <h4 class="media-heading">{{ comment.name }}</h4>
               {{ comment.body }}
             </div>
+          </div>
         </div>
       </div>
-
-
-
-      </div>
-
     </div>
   </div>
 </div>

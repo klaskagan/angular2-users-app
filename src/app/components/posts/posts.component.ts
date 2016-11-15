@@ -3,6 +3,7 @@ import {PostService} from "../../services/posts/post.service";
 import {Post} from "../../model/Post";
 import {UsersService} from "../../services/users/users.service";
 import {User} from "../users/add-user/User";
+import * as _ from "underscore";
 
 @Component({
   selector: 'app-posts',
@@ -13,6 +14,8 @@ import {User} from "../users/add-user/User";
 export class PostsComponent implements OnInit {
   posts: Post[] = [];
   users: User[] = [];
+  pagedPosts = [];
+  rows: number = 10;
   postsLoading;
   commentsLoading;
   currentPost;
@@ -34,7 +37,10 @@ export class PostsComponent implements OnInit {
     this.postsLoading = true;
     this.postService.getPosts(filter)
       .subscribe(
-        posts => this.posts = posts,
+        posts => {
+          this.posts = posts;
+          this.pagedPosts = _.first(this.posts, this.rows);
+        },
         null,
         () => this.postsLoading = false
       );
@@ -57,4 +63,10 @@ export class PostsComponent implements OnInit {
         () => this.commentsLoading = false
       );
   }
+
+  onPageChanged(page: number) {
+    var startIndex = (page - 1) * this.rows;
+    this.pagedPosts = _.first(_.rest(this.posts, startIndex), this.rows);
+  }
+
 }

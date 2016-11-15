@@ -13,6 +13,7 @@ import {NotFoundComponent} from "./components/not-found.component";
 import {PreventUnsavedChangesGuard} from "./prevent-unsaved-changes-guard.service";
 import { MaterialModule } from '@angular/material';
 import {SpinnerComponent} from "./components/spinner/spinner.component";
+import { PaginationComponent } from './components/pagination/pagination.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import {SpinnerComponent} from "./components/spinner/spinner.component";
     HomeComponent,
     AddUserComponent,
     NotFoundComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    PaginationComponent
   ],
   imports: [
     BrowserModule,
